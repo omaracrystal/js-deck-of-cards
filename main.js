@@ -6,10 +6,23 @@ showCards.onclick = function() {
     var cardContainer = document.getElementById('container');
     cardContainer.innerHTML = "";
     displayCards();
-  if (document.getElementById("clearcards")== null) {
-    createReset();
+          change();
+  if (document.getElementById("reset")== null) {createReset();
   }
 };
+
+function change() {
+  if (showCards.innerHTML=="Deal!") {
+    showCards.innerHTML = "Re-Deal";
+  }
+}
+
+function reDeal() {
+  if (showCards.innerHTML=="Re-Deal") {
+    showCards.innerHTML = "Deal!";
+  }
+}
+
 
 function createReset() {
     var reset = document.createElement('button');
@@ -17,6 +30,7 @@ function createReset() {
     reset.innerHTML = "Reset";
     reset.onclick = function () {
       document.getElementById('container').innerHTML = "";
+      reDeal();
       document.body.removeChild(reset);
     }
     document.body.insertBefore(reset, document.body.children[1]);
@@ -40,7 +54,6 @@ function displayCards() {
 
     }
 }
-
 // Creates a deck of 52 cards
 function newDeck(){
   // variables
@@ -61,6 +74,7 @@ function newDeck(){
     {card:"q"},
     {card:"k"}
   ];
+
   var deck = [];
   // for loops
   for (i = 0; i < ranks.length; i++) {
